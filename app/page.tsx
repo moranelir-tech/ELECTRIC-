@@ -36,6 +36,11 @@ export default async function Home() {
           <p>
             מזינים את החשבון החודשי, רואים כמה אפשר לחסוך אצל כל ספק, ועוברים בכמה קליקים.
           </p>
+          <ul className="trust">
+            <li>ההשוואה חינמית</li>
+            <li>המעבר לא משנה את אספקת החשמל</li>
+            <li>אין צורך בחשמלאי</li>
+          </ul>
         </section>
 
         <Calculator providers={providers} />

@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import Link from "next/link";
+import "@fontsource-variable/heebo/index.css";
 import "./globals.css";
 import { INDEXING, SITE_NAME, SITE_URL } from "@/lib/content";
 
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#0b6bcb",
+  themeColor: "#10242c",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

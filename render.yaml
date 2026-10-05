@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: electricity-compare
+    runtime: docker
+    plan: starter
+    healthCheckPath: /
+    disk:
+      name: data
+      mountPath: /data
+      sizeGB: 1
+    envVars:
+      - key: SITE_URL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: LEADS_WEBHOOK_URL
+        sync: false
+      - key: DATA_DIR
+        value: /data

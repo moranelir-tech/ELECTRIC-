@@ -1,0 +1,50 @@
+[
+  {
+    "id": "p1",
+    "slug": "sample-provider-1",
+    "name": "ספק לדוגמה 1",
+    "plan": "מסלול הנחה קבועה",
+    "discountPercent": 5,
+    "hours": "כל שעות היממה",
+    "minMonthlyBill": 0,
+    "commitment": "ללא התחייבות",
+    "notes": "נתוני דוגמה - יש לעדכן בפאנל הניהול",
+    "affiliateUrl": "https://example.com/provider-1",
+    "featured": true,
+    "active": true,
+    "sortOrder": 1,
+    "clicks": 0
+  },
+  {
+    "id": "p2",
+    "slug": "sample-provider-2",
+    "name": "ספק לדוגמה 2",
+    "plan": "מסלול שעות יום",
+    "discountPercent": 7,
+    "hours": "07:00-17:00",
+    "minMonthlyBill": 150,
+    "commitment": "ללא התחייבות",
+    "notes": "נתוני דוגמה - יש לעדכן בפאנל הניהול",
+    "affiliateUrl": "https://example.com/provider-2",
+    "featured": false,
+    "active": true,
+    "sortOrder": 2,
+    "clicks": 0
+  },
+  {
+    "id": "p3",
+    "slug": "sample-provider-3",
+    "name": "ספק לדוגמה 3",
+    "plan": "מסלול שעות לילה",
+    "discountPercent": 9,
+    "hours": "23:00-07:00",
+    "minMonthlyBill": 0,
+    "commitment": "12 חודשים",
+    "notes": "נתוני דוגמה - יש לעדכן בפאנל הניהול",
+    "affiliateUrl": "https://example.com/provider-3",
+    "featured": false,
+    "active": true,
+    "sortOrder": 3,
+    "clicks": 0
+  }
+]

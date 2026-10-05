@@ -47,7 +47,7 @@ h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); }
 .calc { display: flex; flex-wrap: wrap; gap: 16px; align-items: end; justify-content: center; }
 .field { display: flex; flex-direction: column; gap: 6px; }
 .field label { font-weight: 600; font-size: .95rem; }
-.input {
+select.input, .input {
   font: inherit; padding: 12px 14px; border: 1px solid #c9d3e0; border-radius: 10px; background: #fff; color: var(--text); min-width: 220px;
 }
 .input:focus { outline: 3px solid rgba(11,107,203,.25); border-color: var(--brand); }

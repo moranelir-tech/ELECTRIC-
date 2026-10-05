@@ -37,9 +37,22 @@ async function loadProviders(): Promise<Provider[]> {
   try {
     await fs.access(PROVIDERS_FILE);
   } catch {
-    return readJson<Provider[]>(SEED_FILE, []);
+    return normalize(await readJson<Partial<Provider>[]>(SEED_FILE, []));
   }
-  return readJson<Provider[]>(PROVIDERS_FILE, []);
+  return normalize(await readJson<Partial<Provider>[]>(PROVIDERS_FILE, []));
+}
+
+// השלמת שדות חסרים (תאימות לנתונים שנשמרו בגרסה קודמת)
+function normalize(list: Partial<Provider>[]): Provider[] {
+  return list.map((p) => ({
+    planType: "flat_24_7",
+    discountMax: null,
+    requiresSmartMeter: false,
+    bundleRequired: false,
+    monthlyCap: 0,
+    officialUrl: "",
+    ...p,
+  })) as Provider[];
 }
 
 export async function getProviders(): Promise<Provider[]> {

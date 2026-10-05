@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import type { Lead, Provider } from "@/lib/types";
+import { PLAN_TYPE_LABELS, type Lead, type PlanType, type Provider } from "@/lib/types";
 
 type Tab = "providers" | "leads";
 
@@ -10,11 +10,17 @@ const EMPTY: Provider = {
   slug: "",
   name: "",
   plan: "",
+  planType: "flat_24_7",
   discountPercent: 0,
+  discountMax: null,
   hours: "",
+  requiresSmartMeter: false,
+  bundleRequired: false,
+  monthlyCap: 0,
   minMonthlyBill: 0,
   commitment: "",
   notes: "",
+  officialUrl: "",
   affiliateUrl: "",
   featured: false,
   active: true,
@@ -158,10 +164,16 @@ export default function AdminPanel() {
                   <th>שם ספק</th>
                   <th>מזהה (אנגלית)</th>
                   <th>מסלול</th>
-                  <th>הנחה %</th>
+                  <th>סוג מסלול</th>
+                  <th>הנחה % (מינ׳)</th>
+                  <th>הנחה % (מקס׳)</th>
+                  <th>מונה חכם</th>
+                  <th>מותנה בלקוח</th>
+                  <th>תקרה חודשית ₪</th>
                   <th>שעות</th>
                   <th>חשבון מינימלי ₪</th>
                   <th>התחייבות</th>
+                  <th>אתר רשמי</th>
                   <th>קישור שותפים</th>
                   <th>הערות</th>
                   <th>קליקים</th>
@@ -177,10 +189,22 @@ export default function AdminPanel() {
                     <td><input type="text" value={p.name} onChange={(e) => update(i, { name: e.target.value })} /></td>
                     <td><input type="text" dir="ltr" value={p.slug} onChange={(e) => update(i, { slug: e.target.value })} /></td>
                     <td><input type="text" value={p.plan} onChange={(e) => update(i, { plan: e.target.value })} /></td>
+                    <td>
+                      <select value={p.planType} onChange={(e) => update(i, { planType: e.target.value as PlanType })}>
+                        {(Object.keys(PLAN_TYPE_LABELS) as PlanType[]).map((k) => (
+                          <option key={k} value={k}>{PLAN_TYPE_LABELS[k]}</option>
+                        ))}
+                      </select>
+                    </td>
                     <td><input type="number" step="0.1" value={p.discountPercent} onChange={(e) => update(i, { discountPercent: Number(e.target.value) })} style={{ minWidth: 70 }} /></td>
+                    <td><input type="number" step="0.1" value={p.discountMax ?? ""} onChange={(e) => update(i, { discountMax: e.target.value === "" ? null : Number(e.target.value) })} style={{ minWidth: 70 }} /></td>
+                    <td><input type="checkbox" checked={p.requiresSmartMeter} onChange={(e) => update(i, { requiresSmartMeter: e.target.checked })} /></td>
+                    <td><input type="checkbox" checked={p.bundleRequired} onChange={(e) => update(i, { bundleRequired: e.target.checked })} /></td>
+                    <td><input type="number" value={p.monthlyCap} onChange={(e) => update(i, { monthlyCap: Number(e.target.value) })} style={{ minWidth: 70 }} /></td>
                     <td><input type="text" value={p.hours} onChange={(e) => update(i, { hours: e.target.value })} /></td>
                     <td><input type="number" value={p.minMonthlyBill} onChange={(e) => update(i, { minMonthlyBill: Number(e.target.value) })} style={{ minWidth: 80 }} /></td>
                     <td><input type="text" value={p.commitment} onChange={(e) => update(i, { commitment: e.target.value })} /></td>
+                    <td><input type="url" dir="ltr" value={p.officialUrl} onChange={(e) => update(i, { officialUrl: e.target.value })} /></td>
                     <td><input type="url" dir="ltr" value={p.affiliateUrl} onChange={(e) => update(i, { affiliateUrl: e.target.value })} /></td>
                     <td><input type="text" value={p.notes} onChange={(e) => update(i, { notes: e.target.value })} /></td>
                     <td>{p.clicks}</td>

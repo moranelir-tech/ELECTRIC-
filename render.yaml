@@ -9,13 +9,14 @@ services:
       mountPath: /data
       sizeGB: 1
     envVars:
+      # הכתובת הזמנית של Render. אחרי חיבור דומיין מעדכנים כאן ובדאשבורד
       - key: SITE_URL
-        sync: false
-      - key: ADMIN_PASSWORD
-        sync: false
+        value: https://electricity-compare.onrender.com
+      # off = האתר מסומן noindex ולא מופיע בגוגל. לפרסום מחליפים ל-on
+      - key: SITE_INDEXING
+        value: "off"
       - key: SESSION_SECRET
         generateValue: true
-      - key: LEADS_WEBHOOK_URL
-        sync: false
       - key: DATA_DIR
         value: /data
+      # ADMIN_PASSWORD לא מוגדר בכוונה: פאנל הניהול נעול עד שמוסיפים אותו בדאשבורד

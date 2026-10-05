@@ -11,6 +11,8 @@ ENV NEXT_TELEMETRY_DISABLED=1
 # SITE_URL נדרש בזמן build בשביל sitemap ו-canonical
 ARG SITE_URL=http://localhost:3000
 ENV SITE_URL=$SITE_URL
+ARG SITE_INDEXING=off
+ENV SITE_INDEXING=$SITE_INDEXING
 RUN npm run build
 
 FROM node:22-alpine AS run

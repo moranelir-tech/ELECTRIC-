@@ -66,3 +66,9 @@ npm run dev                  # http://localhost:3000
 - להיכנס ל-`/admin`, להחליף את נתוני הדוגמה בספקים אמיתיים.
 - לחבר דומיין: בספק האחסון Custom Domain, ולעדכן את `SITE_URL` לכתובת הסופית (הערך נקרא בזמן build, לכן צריך deploy מחדש).
 - לשלוח את `https://<הדומיין>/sitemap.xml` ב-Google Search Console.
+
+## מצב בנייה (לפני פרסום)
+
+- `SITE_INDEXING=off` (ברירת מחדל): האתר מסומן noindex ו-`robots.txt` חוסם את כולו, כך שגוגל לא מאנדקס אותו.
+- `ADMIN_PASSWORD` לא מוגדר: הכניסה ל-`/admin` חסומה. להפעלה מוסיפים אותו ב-Render (Environment) וממתינים לפריסה מחדש.
+- **לפרסום:** מחליפים `SITE_INDEXING` ל-`on`, מעדכנים `SITE_URL` לדומיין הסופי, ומפעילים deploy מחדש (הערכים נקראים בזמן build).

@@ -1,6 +1,9 @@
 export const SITE_NAME = "השוואת חשמל";
 export const SITE_URL = (process.env.SITE_URL || "http://localhost:3000").replace(/\/$/, "");
 
+// האתר מאונדקס בגוגל רק כש-SITE_INDEXING=on. כברירת מחדל הוא מסומן noindex (שלב בנייה, לפני פרסום)
+export const INDEXING = process.env.SITE_INDEXING === "on";
+
 export const FAQ: { q: string; a: string }[] = [
   {
     q: "איך עובד המעבר לספק חשמל פרטי?",

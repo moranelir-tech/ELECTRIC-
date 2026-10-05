@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import Link from "next/link";
 import "./globals.css";
-import { SITE_NAME, SITE_URL } from "@/lib/content";
+import { INDEXING, SITE_NAME, SITE_URL } from "@/lib/content";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     title: `${SITE_NAME} | השוואת ספקי חשמל`,
     description: "מחשבון חיסכון והשוואה בין ספקי חשמל בישראל.",
   },
-  robots: { index: true, follow: true },
+  robots: { index: INDEXING, follow: INDEXING },
 };
 
 export const viewport: Viewport = {
